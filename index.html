@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Ecology Store</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+ 
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4fef4;
+      color: #2e7d32;
+    }
+
+    header {
+      background: url(https://cs6.pikabu.ru/post_img/big/2015/06/08/3/1433735650_472905306.jpg) no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+
+
+
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: scale(1.02);
+    }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .product h3, .product p {
+      margin: 10px;
+    }
+
+    .product button {
+      margin: 10px;
+      background: #388e3c;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .footer{
+        background-color:#BBD8A3;
+    }
+
+    .cart-icon {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #2e7d32;
+      color: white;
+      font-size: 26px;
+      padding: 14px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-decoration: none;
+      z-index: 1000;
+    }
+    .section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+  justify-content: center;
+  background-color: #2c642f;
+}
+
+
+
+    .h1{
+        align-items: center;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #modal-content {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      border-radius: 12px;
+      text-align: center;
+      color: #2e7d32;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      padding: 20px;
+      background: #e0f2f1;
+      color: #388e3c;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+      background: #f4f4f4;
+    }
+    h2 { margin-top: 0; }
+    .product {
+      background: white;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    #search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background-color: #F0F1C5;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.product:hover {
+  transform: scale(1.03);
+  body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #eaf7ea;
+  padding: 40px;
+}
+
+#search {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #a4d4a4;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  outline: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+}
+
+#products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background-color: #ffffff;
+  border: 1px solid #c8e6c9;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.product:hover {
+  transform: scale(1.02);
+}
+
+
+.product img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.product span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #2e7d32;
+}
+
+.product p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+  
+}
+
+
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="h1" id="h1">Ecology</h1>
+</header>
+<h2>О нас</h2>
+    <p class="qwerty">Мы предлагаем экологически чистые продукты, которые помогут вам улучшить качество вашего здоровья.</p>
+
+
+
+
+<section class="products" id="products"></section>
+
+
+
+
+<!--Корзина-->
+<a href="cart.html" class="cart-icon">
+  <i class="fa-solid fa-shopping-cart"></i>
+</a>
+
+
+
+<div id="modal">
+  <div id="modal-content">
+    <h3 id="modal-title"></h3>
+    <p id="modal-description"></p>
+    <button onclick="closeModal()">Закрыть</button>
+  </div>
+</div>
+<div class="products">
+    <div class="product">
+        <img src="https://vaviol.com/upload/iblock/801/801d7fb05acc2e32289440ac5b0d5d6e.jpg" alt="Шоколадный набор Барашек">
+        <h3>Шоколадный набор</h3>
+        <p>(сахар, масло какао, сухое цельное молоко, какао тертое, сухая молочная сыворотка, молочный жир, эмульгатор: соевый лецитин, ароматизатор: ванилин, эмульгатор Е476)</p>
+        <span class="price">1300 ₽</span> 
+        <button onclick="addToCart('Шоколадный набор', 'Натуральный шоколад', 1300, 'https://images.unsplash.com/photo-1598454445381-58f642cc0e58')">В корзину</button>
+      </div>
+      
+      <div class="product">
+        <img src="https://basket-04.wbbasket.ru/vol692/part69222/69222257/images/big/1.webp" alt="Кедровый кофе">
+        <h3>Кедровый кофе</h3>
+        <p>Натуральный напиток, приготовленный на основе цельного кедрового ореха. Обладает нежным вкусом и превосходным ароматом кедрового ореха.</p>
+        <span class="price">180 ₽</span> 
+        <button onclick="addToCart('Кедровый кофе', 'кофе из свежих зерен', 180, 'https://images.unsplash.com/photo-1581091012184-cb8c616e18c5')">В корзину</button>
+      </div>
+      
+
+      
+      <div class="product">
+        <img src="https://ir.ozone.ru/s3/multimedia-y/wc1000/6613922338.jpg" alt="Масло облепиховое ">
+        <h3>Масло облепиховое </h3>
+        <p>Из народной медицины: применяется для нормализации состояния сосудов и кровообращения,
+          работы печени, при гастрите, язве желудка, панкреатите, воспалении кишечника, от ангины, фарингита, синусита, отита, тонзиллита, ларингита, кожных заболеваний и травм.
+        </p>
+        <span class="price">450 ₽</span> 
+        <button onclick="addToCart('Масло облепиховое ', 'получено способом двойной мацерации косточки, мякоти и кожицы плодов', 450,)">В корзину</button>
+      </div>
+      
+      <div class="product">
+        <img src="https://aidigo-shop.ru/upload/resize_cache/webp/iblock/951/951295e2d9aa17f92cfaade1cc0ad77f.webp" alt="Сок МАНГО-ОБЛЕПИХА">
+        <h3>Сок "МАНГО-ОБЛЕПИХА"</h3>
+        <p>Состав:ок ягодный восстановленный с мякотью облепихи сок облепихи, пюре манго, сахар, консервант
+          сорбиновая кислота, вода подготовленная.
+          Стеклянная бутылка.</p>
+        <span class="price">600 ₽</span> 
+        <button onclick="addToCart('Сок МАНГО-ОБЛЕПИХА', 'Сок ягодный восстановленный с мякотью облепихи', 600,)">В корзину</button>
+      </div>
+      
+      <div class="product">
+        <img src="https://ir.ozone.ru/s3/multimedia-5/wc1000/6291062993.jpg" alt="Мармелад малиновый">
+        <h3>Мармелад малиновый</h3>
+        <p>Натуральный ягодный мармелад из пюре малины, выращенной и переработанной в сибирском регионе.</p>
+        <span class="price">390 ₽</span> 
+        <button onclick="addToCart('Мармелад малиновый', 'Никаких ароматизаторов и красителей, только натуральное сырье!', 390,)">В корзину</button>
+      </div>
+      
+      <div class="product">
+        <img src="https://cs1.livemaster.ru/storage/15/fc/a6cbc5f5853c34abc091e7f1adk4--suveniry-i-podarki-dzhem-i-varene-varene-tuvinskoe-s-tselnymi.jpg" alt="Мёд и варенье Тува">
+        <h3>Мёд и варенье Тува</h3>
+        <p>Необычайное варенье из молодых сосновых шишек с добавлением тувинского мёда обладает хвойным ароматом и ни с чем не сравнимым вкусом.</p>
+        <span class="price">280 ₽</span> 
+        <button onclick="addToCart('Мёд и варенье Тува', 'Таежное лакомство не только вкусное и приятное, оно еще и полезное.', 280, 'https://cs1.livemaster.ru/storage/15/fc/a6cbc5f5853c34abc091e7f1adk4--suveniry-i-podarki-dzhem-i-varene-varene-tuvinskoe-s-tselnymi.jpg')">В корзину</button>
+      </div>
+    <div class="product">
+      <img src="https://ir.ozone.ru/s3/multimedia-1-y/wc1000/7215576370.jpg" alt="Набор специй ЗОЛОТАЯ КУЛЧА">
+      <h3>Набор специй ЗОЛОТАЯ КУЛЧА</h3>
+      <p>Состав: кулча, паприка, орегано, карри, семя горчицы, зира, тимьян, чеснок сушеный, смесь перцев (черный, зеленый, пряный).</p>
+      <span class="price">750 ₽</span> 
+      <button onclick="addToCart('Набор специй ЗОЛОТАЯ КУЛЧА', 'Приправа к мясу', 750, )">В корзину</button>
+    </div>
+  
+    <div class="product">
+      <img src="https://avatars.mds.yandex.net/i?id=41e6afc7ff60fd9455c81f7046fcf0d45e885ce7-5232475-images-thumbs&n=13" alt="Чайный набор «Травы Тувы»">
+      <h3>Чайный набор «Травы Тувы»</h3>
+      <p>Травы собраны в дальних краях Тувы.</p>
+      <span class="price">200 ₽</span> 
+      <button onclick="addToCart('Чайный набор «Травы Тувы»', 'Все натуральное', 200, )">В корзину</button>
+    </div>
+  
+    <div class="product">
+      <img src="https://vaviol.com/upload/iblock/d37/d379f842bb20e998de5728c4833c6336.jpg" alt="Продукт Чуксугбай - ЭМ">
+      <h3>Продукт Чуксугбай - ЭМ</h3>
+      <p>Редкое растение произрастаещее в Саянских горах.
+        Активно применяется в Тибетской, Монгольской, Тувинской медицине.</p>
+      <span class="price">350 ₽</span> 
+      <button onclick="addToCart('Продукт Чуксугбай - ЭМ', 'Восстанавливает клетки, замедляет старение, защищает стенки желудка, уменьшает болевой синдром.', 350,)">В корзину</button>
+    </div>
+  
+  
+    <div class="product">
+      <img src="https://sun1-23.userapi.com/s/v1/ig2/heg7VaTIBgTNfZZgB-KElJmkh3-uYXeuV3FBaLNDfmGg-7ALUYZ554ez1ESmxn1yrOURPTUC-lnK-NwVT5ETBVhZ.jpg?quality=95&as=32x42,48x63,72x95,108x142,160x211,240x316,360x475,480x633,540x712,640x844,720x949,1080x1424,1280x1687,1440x1898,1769x2332&from=bu&u=58BtsdEyqn9b_tR6CnZGLtmNvMCQrkYNjOYVUFU-v4c&cs=612x807" alt="Чай с молоком Тувинский">
+      <h3>Чай с молоком Тувинский</h3>
+      <p>Бодрящий, восполняющий энергию чай.</p>
+      <span class="price">250 ₽</span> 
+      <button onclick="addToCart('Чай с молоком Тувинский', 'Аромат бескрайних степей', 250,)">В корзину</button>
+    </div>
+  </div>
+  <section class="section" id="section"></section>
+  <footer class="footer">
+    <p>Техподдержка: ecologyshopchik@gmail.com</p>
+    <p>Телефон: +7 (993) 391-72-86</p>
+    <p> 2025 Ecology</p>
+  </footer>
+  <script>
+  
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let item = cart.find(i => i.name === name);
+      if (item) {
+        item.quantity += 1;
+      } else {
+        cart.push({ name, price, quntity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} добавлен в корзину.`);
+    }
+  
+  
+
+
+
+function renderProducts(list = productList) {
+  const container = document.getElementById("products");
+  container.innerHTML = "";
+  list.forEach(product => {
+    const div = document.createElement("div");
+    div.className = "product";
+    div.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <span>${product.name}</span>
+      <p>${product.price}₽</p>
+      <p><strong>${product.price}₽</strong></p>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function filterProducts() {
+  const query = document.getElementById("search").value.toLowerCase();
+  const filtered = productList.filter(p => p.name.toLowerCase().includes(query));
+  renderProducts(filtered);
+}
+
+window.onload = () => renderProducts();
+
+  
+    
+
+  </script>
+
+
+
+</body>
+</html>
